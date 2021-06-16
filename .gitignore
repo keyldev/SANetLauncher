@@ -1,0 +1,7 @@
+﻿################################################################################
+# Данный GITIGNORE-файл был автоматически создан Microsoft(R) Visual Studio.
+################################################################################
+
+/SA_NetLauncher/.vs/launcher_template/v16
+/SA_NetLauncher/bin/Debug
+/SA_NetLauncher/obj/Debug
