@@ -69,6 +69,18 @@ namespace launcher_template
                 {
                     downloadProgress.Value = 100;
                     bPlay.Content = "Играть";
+
+                    ServerInfo.isGameInstalled = true;
+                    SaveServerInfo cis = new SaveServerInfo();
+                    cis.isGameInstalled = ServerInfo.isGameInstalled;
+                    string serialized = JsonConvert.SerializeObject(cis);
+                    using (StreamWriter sw = new StreamWriter(Directory.GetCurrentDirectory() + "/settings.json"))
+                    {
+                        sw.Write(serialized);
+                        sw.Close();
+                    }
+
+
                 };
                 downloader.DownloadFileAsync(new Uri("здесь_ссылка_на_файл"), "здесь_название_файла . расширение");
             }
@@ -76,7 +88,23 @@ namespace launcher_template
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var api = new VkApi();
+            SaveServerInfo cis = new SaveServerInfo();
+            try
+            {
+                using (StreamReader sw = new StreamReader(AppDomain.CurrentDomain.BaseDirectory + "/settings.json"))
+                {
+                    string json = sw.ReadToEnd();
+                    cis = JsonConvert.DeserializeObject<SaveServerInfo>(json);
+                    ServerInfo.gamePath = cis.gamePath;
+                    ServerInfo.isGameInstalled = cis.isGameInstalled;
+                    sw.Close();
+                }
+            }
+            catch
+            {
+            }
+
+           /* var api = new VkApi();
             api.Authorize(new ApiAuthParams { AccessToken = "vk_token_here" });
 
             var get = api.Wall.Get(new WallGetParams
@@ -92,7 +120,7 @@ namespace launcher_template
 
             imgTest.Source = new BitmapImage(uriImageSource);
             for (int i = 0; i < 5; i++)
-                newsPanel.Children.Add(new Additional(get.WallPosts[i].Text, get.WallPosts[i].Text));
+                newsPanel.Children.Add(new Additional(get.WallPosts[i].Text, get.WallPosts[i].Text));*/
         }
         string getPhotoURL(VkNet.Model.Attachments.Photo photo)
         {
