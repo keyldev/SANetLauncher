@@ -255,7 +255,7 @@
                     </Rectangle.Fill>
                 </Rectangle>
             </Grid>
-            <Grid HorizontalAlignment="Left" Height="461" Margin="899,76,0,0" VerticalAlignment="Top" Width="351">
+            <Grid HorizontalAlignment="Left" Height="466" Margin="899,76,0,0" VerticalAlignment="Top" Width="351">
                 <TextBlock HorizontalAlignment="Left" Margin="0,3,0,0" TextWrapping="Wrap" Text="Последние новости"
                        VerticalAlignment="Top" Height="32" Width="351" FontSize="24" TextDecorations="Underline" Foreground="#99FFFFFF"
                        TextAlignment="Center"/>
