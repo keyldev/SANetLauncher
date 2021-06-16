@@ -116,13 +116,13 @@
     <Folder Include="UI\Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\pause.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\testNews.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

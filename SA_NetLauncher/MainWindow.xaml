@@ -235,7 +235,7 @@
                     BorderThickness="0" Background="{x:Null}" Foreground="White" Height="52" Style="{DynamicResource SitesButton}">
                     <TextBlock TextWrapping="Wrap" Text="Донат" TextDecorations="Underline" FontSize="20"/>
                 </Button>
-                <Image HorizontalAlignment="Left" Height="53" VerticalAlignment="Top" Width="157" Source="Assets/logo.png"/>
+                <Image HorizontalAlignment="Left" Height="53" VerticalAlignment="Top" Width="157" Source="Assets/logo.png" />
                 <TextBlock HorizontalAlignment="Left" Margin="1101,14,0,0" 
                            TextWrapping="Wrap" Text="Ivan_Ivanov" VerticalAlignment="Top" Height="26" Width="104" Foreground="#FFC70000"
                            TextAlignment="Center" FontSize="18"/>
@@ -251,7 +251,7 @@
                 <Rectangle HorizontalAlignment="Left" Height="414" Margin="0" Stroke="{x:Null}" VerticalAlignment="Top" Width="843"
                        RadiusY="15" RadiusX="15">
                     <Rectangle.Fill>
-                        <ImageBrush ImageSource="Assets/testNews.jpg"/>
+                        <ImageBrush ImageSource="Assets/logo.png" />
                     </Rectangle.Fill>
                 </Rectangle>
             </Grid>
