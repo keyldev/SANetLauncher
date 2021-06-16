@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace launcher_template.Core
 {
-    public static class ServerInfo
+    public class ServerInfo
     {
         public static string nickName;
         public static string gamePath;

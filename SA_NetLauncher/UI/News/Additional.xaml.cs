@@ -20,9 +20,13 @@ namespace launcher_template.UI.News
     /// </summary>
     public partial class Additional : UserControl
     {
-        public Additional()
+        public Additional(string header, string maintext)
         {
             InitializeComponent();
+
+
+            headerTextBlock.Text = header;
+            mainTextBlock.Text = maintext;
         }
     }
 }

@@ -1,8 +1,10 @@
 ﻿using launcher_template.Core;
 using launcher_template.UI.News;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -16,6 +18,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VkNet;
+using VkNet.Model;
+using VkNet.Model.Attachments;
+using VkNet.Model.RequestParams;
 
 namespace launcher_template
 {
@@ -29,14 +35,10 @@ namespace launcher_template
             InitializeComponent();
             if (!ServerInfo.isGameInstalled)
                 bPlay.Content = "Обновить";
-            
-            for (int i = 0; i < 5; i++)
-                newsPanel.Children.Add(new Additional());
-
         }
 
         private void bClose_Click(object sender, RoutedEventArgs e) =>
-            Application.Current.Shutdown();
+            System.Windows.Application.Current.Shutdown();
 
         private void bHide_Click(object sender, RoutedEventArgs e) =>
             this.WindowState = WindowState.Minimized;
@@ -50,7 +52,8 @@ namespace launcher_template
 
         private void bPlay_Click(object sender, RoutedEventArgs e)
         {
-            if(ServerInfo.isGameInstalled == true)
+
+            if (ServerInfo.isGameInstalled == true)
             {
                 Process.Start("multiplayer_browser_cr.exe");
             }
@@ -69,6 +72,47 @@ namespace launcher_template
                 };
                 downloader.DownloadFileAsync(new Uri("здесь_ссылка_на_файл"), "здесь_название_файла . расширение");
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var api = new VkApi();
+            api.Authorize(new ApiAuthParams { AccessToken = "vk_token_here" });
+
+            var get = api.Wall.Get(new WallGetParams
+            {
+                OwnerId = -1, // id group with minus
+                Domain = "@group_url_here",
+                Offset = 0,
+                Count = 5,
+                Extended = true
+            });
+            tbHeaderText.Text = get.WallPosts[0].Text;
+            var uriImageSource = new Uri(getPhotoURL(get.WallPosts[0].Attachment.Instance as Photo));
+
+            imgTest.Source = new BitmapImage(uriImageSource);
+            for (int i = 0; i < 5; i++)
+                newsPanel.Children.Add(new Additional(get.WallPosts[i].Text, get.WallPosts[i].Text));
+        }
+        string getPhotoURL(VkNet.Model.Attachments.Photo photo)
+        {
+            if (photo == null)
+            {
+                return "https://sun2.43222.userapi.com/3_cayJRQoas6-ymflVhL8b5goDA_zNfB4lnzDg/-pv5ESBPKX8.jpg";
+            }
+            if (photo.Sizes?.Count > 0)
+            {
+                var bigSize = photo.Sizes[0];
+                for (int i = 0; i < photo.Sizes.Count; i++)
+                {
+                    var photoSize = photo.Sizes[i];
+                    if (photoSize.Height > bigSize.Height && photoSize.Width > bigSize.Width)
+                        bigSize = photoSize;
+                }
+
+                return bigSize.Url.ToString();
+            }
+            return "https://sun2.43222.userapi.com/3_cayJRQoas6-ymflVhL8b5goDA_zNfB4lnzDg/-pv5ESBPKX8.jpg";
         }
     }
 }

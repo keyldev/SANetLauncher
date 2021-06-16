@@ -8,7 +8,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280"
         WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize"
-        AllowsTransparency="true" Background="{x:Null}" MouseLeftButtonDown="Window_MouseLeftButtonDown">
+        AllowsTransparency="true" Background="{x:Null}" MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        Loaded="Window_Loaded">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -243,17 +244,18 @@
         </Border>
         <Grid HorizontalAlignment="Center" Height="662" Margin="0,58,0,0" VerticalAlignment="Center" Width="1280">
             <Grid HorizontalAlignment="Left" Height="484" VerticalAlignment="Top" Width="860" Margin="25,76,0,0">
-                <TextBlock HorizontalAlignment="Left" Margin="10,413,0,0" TextWrapping="Wrap" Text="Переход на 0.3.7" VerticalAlignment="Top" Foreground="White" Width="644" FontSize="22" Height="38"/>
-                <TextBlock HorizontalAlignment="Left" Margin="10,451,0,0" TextWrapping="Wrap" Text="Переход на версию 0.3.7 успешен" VerticalAlignment="Top" Width="644" Foreground="White" Height="33" FontSize="18"/>
+                <TextBlock x:Name="tbHeaderText" HorizontalAlignment="Left" Margin="10,413,0,0" TextWrapping="Wrap" Text="Переход на 0.3.7" VerticalAlignment="Top" Foreground="White" Width="644" FontSize="22" Height="38"/>
+                <TextBlock x:Name="tbMainText" HorizontalAlignment="Left" Margin="10,451,0,0" TextWrapping="Wrap" Text="Переход на версию 0.3.7 успешен" VerticalAlignment="Top" Width="644" Foreground="White" Height="33" FontSize="18"/>
                 <TextBlock HorizontalAlignment="Left" Margin="659,418,0,0" TextWrapping="Wrap" Text="777" VerticalAlignment="Top" Foreground="White"/>
                 <TextBlock HorizontalAlignment="Left" Margin="709,418,0,0" TextWrapping="Wrap" Text="777" VerticalAlignment="Top" Foreground="White"/>
                 <TextBlock HorizontalAlignment="Left" Margin="764,418,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Height="16"><Run Text="18"/><Run Text="."/><Run Text="04"/><Run Text="."/><Run Text="20"/><Run Text="19"/><LineBreak/><Run/></TextBlock>
-                <Rectangle HorizontalAlignment="Left" Height="414" Margin="0" Stroke="{x:Null}" VerticalAlignment="Top" Width="843"
+                <Rectangle x:Name="postPicture" HorizontalAlignment="Left" Height="414" Margin="0" Stroke="{x:Null}" VerticalAlignment="Top" Width="843"
                        RadiusY="15" RadiusX="15">
                     <Rectangle.Fill>
-                        <ImageBrush ImageSource="Assets/logo.png" />
+                        <ImageBrush ImageSource="Assets/testNews.jpg" />
                     </Rectangle.Fill>
                 </Rectangle>
+                <Image x:Name="imgTest" HorizontalAlignment="Left" Height="418" VerticalAlignment="Top" Width="843" Stretch="Fill"/>
             </Grid>
             <Grid HorizontalAlignment="Left" Height="466" Margin="899,76,0,0" VerticalAlignment="Top" Width="351">
                 <TextBlock HorizontalAlignment="Left" Margin="0,3,0,0" TextWrapping="Wrap" Text="Последние новости"
@@ -264,7 +266,7 @@
                 </ScrollViewer>
             </Grid>
             <Grid HorizontalAlignment="Left" Height="83" Margin="0,582,0,-3" VerticalAlignment="Top" Width="1280">
-                <ProgressBar x:Name="downloadProgress" HorizontalAlignment="Left" Height="11" Margin="42,40,0,0" VerticalAlignment="Top" Width="833" Background="#FFF10000"
+                <ProgressBar x:Name="downloadProgress" HorizontalAlignment="Left" Height="11" Margin="42,40,0,0" VerticalAlignment="Top" Width="833" Background="#FFF10000" Value="50"
                              BorderThickness="0" Style="{DynamicResource downloaderProgressBar}">
                     <ProgressBar.Foreground>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
