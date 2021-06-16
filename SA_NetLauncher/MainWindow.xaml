@@ -247,7 +247,7 @@
                 <TextBlock HorizontalAlignment="Left" Margin="10,451,0,0" TextWrapping="Wrap" Text="Переход на версию 0.3.7 успешен" VerticalAlignment="Top" Width="644" Foreground="White" Height="33" FontSize="18"/>
                 <TextBlock HorizontalAlignment="Left" Margin="659,418,0,0" TextWrapping="Wrap" Text="777" VerticalAlignment="Top" Foreground="White"/>
                 <TextBlock HorizontalAlignment="Left" Margin="709,418,0,0" TextWrapping="Wrap" Text="777" VerticalAlignment="Top" Foreground="White"/>
-                <TextBlock HorizontalAlignment="Left" Margin="764,418,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Height="16"><Run Text="18"/><Run Text="."/><Run Text="04"/><Run Text="."/><Run Text="20"/><Run Text="21"/><LineBreak/><Run/></TextBlock>
+                <TextBlock HorizontalAlignment="Left" Margin="764,418,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Height="16"><Run Text="18"/><Run Text="."/><Run Text="04"/><Run Text="."/><Run Text="20"/><Run Text="19"/><LineBreak/><Run/></TextBlock>
                 <Rectangle HorizontalAlignment="Left" Height="414" Margin="0" Stroke="{x:Null}" VerticalAlignment="Top" Width="843"
                        RadiusY="15" RadiusX="15">
                     <Rectangle.Fill>
