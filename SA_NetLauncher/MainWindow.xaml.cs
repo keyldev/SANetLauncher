@@ -1,8 +1,10 @@
-﻿using launcher_template.UI.News;
+﻿using launcher_template.Core;
+using launcher_template.UI.News;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,29 +27,48 @@ namespace launcher_template
         public MainWindow()
         {
             InitializeComponent();
+            if (!ServerInfo.isGameInstalled)
+                bPlay.Content = "Обновить";
+            
             for (int i = 0; i < 5; i++)
                 newsPanel.Children.Add(new Additional());
-            
+
         }
 
-        private void bClose_Click(object sender, RoutedEventArgs e)
-        {
+        private void bClose_Click(object sender, RoutedEventArgs e) =>
             Application.Current.Shutdown();
-        }
 
-        private void bHide_Click(object sender, RoutedEventArgs e)
-        {
+        private void bHide_Click(object sender, RoutedEventArgs e) =>
             this.WindowState = WindowState.Minimized;
-        }
 
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) =>
             this.DragMove();
-        }
 
-        private void bMainSite_Click(object sender, RoutedEventArgs e)
-        {
+        private void bMainSite_Click(object sender, RoutedEventArgs e) =>
             Process.Start("https://vk.com/id1");
+
+        private void bPlay_Click(object sender, RoutedEventArgs e)
+        {
+            if(ServerInfo.isGameInstalled == true)
+            {
+                Process.Start("multiplayer_browser_cr.exe");
+            }
+            else
+            {
+                WebClient downloader = new WebClient();
+                downloader.DownloadProgressChanged += (o, x) =>
+                {
+                    downloadProgress.Value = x.ProgressPercentage;
+
+                };
+                downloader.DownloadFileCompleted += (o, z) =>
+                {
+                    downloadProgress.Value = 100;
+                    bPlay.Content = "Играть";
+                };
+                downloader.DownloadFileAsync(new Uri("здесь_ссылка_на_файл"), "здесь_название_файла . расширение");
+            }
         }
     }
 }

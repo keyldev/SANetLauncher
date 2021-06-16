@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\ServerInfo.cs" />
     <Compile Include="UI\News\Additional.xaml.cs">
       <DependentUpon>Additional.xaml</DependentUpon>
     </Compile>
@@ -112,7 +113,6 @@
     <Resource Include="Assets\background.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Core\" />
     <Folder Include="UI\Resources\" />
   </ItemGroup>
   <ItemGroup>

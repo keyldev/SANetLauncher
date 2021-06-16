@@ -281,8 +281,8 @@
                     </Button.Resources>
                     <Image Height="12" Width="12" Source="Assets/pause.png"/>
                 </Button>
-                <Button Content="Играть" HorizontalAlignment="Left" Margin="969,15,0,0" VerticalAlignment="Top" Width="210" Height="46"
-                        BorderThickness="0" FontSize="24" Foreground="White" Style="{DynamicResource bHide}">
+                <Button x:Name="bPlay" Content="Играть" HorizontalAlignment="Left" Margin="969,15,0,0" VerticalAlignment="Top" Width="210" Height="46"
+                        BorderThickness="0" FontSize="24" Foreground="White" Style="{DynamicResource bHide}" Click="bPlay_Click">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="8"/>
